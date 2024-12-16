@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О нас</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="minor-project-styles.css">
+</head>
+
+<body>
+    <div id="about_us_sidebar"><ul>
+        <nav>
+            <li><h4><a href="#uslugi">Наши услуги</a></h4></li>
+            <li><h4><a href="#order">Заказать услугу</a></h4></li> 
+            <li><h6><a href="index.html">Вернуться на главную страницу</a></h6></li>
+        </nav>
+    </ul>
+    </div>
+    <script src="header_script.js"></script>
+
+    <div id="uslugi_header">
+        <section id="uslugi">
+        <p><h2>Наши услуги</h2></p>
+        <p><h4>Сделаем ваш праздник незабываемым</h4></p>
+        </div>
+    <div id="uslugi">
+        <ol>
+            <li><h4>Тематические фотозоны</h4>
+                <p>Профессиональный фотограф создает уникальные фотозоны с учетом тематики праздника и предпочтений заказчика. Гости смогут сделать яркие и запоминающиеся фотографии, которые останутся на память о событии.</p>
+            </li>
+            <li><h4>Ведение праздника</h4>
+                <ol type="A">
+                    <li><h5>Профессиональный ведущий</h5>
+                        <p>Ищете того, кто сможет превратить ваше событие в настоящий праздник? Наш опытный ведущий обеспечит идеальное сочетание веселья, эмоций и порядка. Мы поможем вам разработать уникальный сценарий, подберем музыку и развлечения, которые подойдут именно вашему событию. </p>
+                    </li>
+                    <li><h5>Тамада на свадьбу</h5>
+                        <p>Хотите, чтобы ваш праздник был наполнен народными традициями и радостью? Наш профессиональный тамада организует всё так, чтобы каждая минута была наполнена смыслом и удовольствием. От выкупа невесты до встречи молодых хлебом-солью – мы позаботимся обо всём, чтобы ваша свадьба стала настоящей сказкой!</p>
+                    </li>
+                    <li><h5>Аниматор на детский праздник</h5>
+                        <p>Детский день рождения, семейный праздник или корпоративное мероприятие – наши аниматоры создадут атмосферу радости и восторга для ваших маленьких и больших гостей. Фокусы, конкурсы, костюмы любимых героев – мы знаем, как сделать праздник ярким и незабываемым!</p>
+                    </li>
+                </ol>
+            </li>
+            <li><h4>Конкурсная программа</h4>
+                <p>Приглашаем вас принять участие в захватывающей конкурсной программе, которая сделает ваш праздник незабываемым! Наши ведущие подготовили множество интересных и веселых конкурсов для всех возрастов. Победители получат ценные призы и массу положительных эмоций!</p>
+            </li>
+        </ol>
+        <hr size="3" width="600" color="#7B5427">
+    </section>
+    </div>  
+        
+
+    <center><h3>Форма для заказа</h3></center>
+    <div id="form">
+        <section id="order">
+        
+<form action="https://www.bing.com/search?" id="UserEnter" name="UserEnter" target="_blank">
+
+        <div id="form_header"><p><h4>Личные данные</h4><input type="hidden"  name="q" value="search"></p></div>
+    <p>Фамилия: <input type="Text" name="last_name" size=20  value="Петров"></p>
+    <p>Имя: <input type="Text" name="first_name" size=20  value="Иван"></p>
+    <p>Номер группы: <input type="Number" name="group" size=20 value="1"></p>
+    <p>Номер телефона: <input type="Number" name="phone" size=20 value="89012345678"></p>
+    <p>Адрес электронной почты: <input type="Text" name="email" size=20 value="pochta@edu.hse.ru"></p>
+    <p>Дата: <input type="date" name="user_date"  value='2024-10-02'></p>
+        <div id="form_header"><p><h4>Ваш заказ</h4><input type="hidden"  name="q" value="search"></p></div>
+    <p>Для кого устраиваете праздник?
+        <input type="Radio" name="place" value="myself">Для себя
+        <input type="Radio" name="place" value="surprize" checked >Готовлю сюрприз
+    </p>
+
+    <p>Какие услуги вам необходимы?
+        <input type="Checkbox" name="experience"  value="10" checked>Праздничная фотозона
+        <input type="Checkbox"  name="experience"   value="20" checked>Конкурсы
+        <input type="Checkbox"  name="experience"   value="30" checked>Тамада/ведущий/аниматор
+    </p>
+
+    <p>Сколько человек будет на празднике? <select name="010_mode">
+        <OPTION value="а">до 10</OPTION>
+        <OPTION value="б">10-20</OPTION>
+        <OPTION value="в">20-30</OPTION>
+        <OPTION value="г">больше 30</OPTION>
+    </select></p>
+
+    <p> Подробно опишите вашу идею праздника
+        <br>
+        <TEXTAREA cols=80 rows=4 name="textarea" >Ваша идея</TEXTAREA>
+    </p>
+
+    <input type="hidden" name="function"  value="page">
+    <input type="hidden" name="page_id"  value="3">
+    <p>
+        <input type="Reset"  name="Reset"  value="Обновить">
+        <input type="Submit" name="submit"  value="Отправить">
+    </p>
+    </form>
+    </section>
+    </div>
+
+</body>
+</html>

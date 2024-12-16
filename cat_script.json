@@ -1,0 +1,90 @@
+[
+  {
+      "id": "1",
+      "title": "Тамада",
+      "vendor_code": "111",
+      "description": "хороший - конкурсы интересные",
+      "price": 40000,
+      "img": "koltsa.jpg"
+    },
+    {
+      "id": "2",
+      "title": "Ведущий",
+      "vendor-code": "222",
+      "description": "весело, смешно, задорно",
+      "price": 20000,
+      "img": "prazdnik_pov_bloki.jpg"
+    },
+    {
+      "id": "3",
+      "title": "Аниматор",
+      "vendor-code": "333",
+      "description": "детям понравится",
+      "price": 30000,
+      "img": "shariki.jpg"
+    },
+    {
+      "id": "4",
+      "title": "Свадебные конкурсы",
+      "vendor-code": "444e",
+      "description": "свадьба запомнится надолго",
+      "price": 15000,
+      "img": "koltsa.jpg"
+    },
+    {
+      "id": "5",
+      "title": "Детские конкурсы",
+      "vendor-code": "4445e",
+      "description": "детям точно не будет скучно",
+      "price": 15000,
+      "img": "shariki.jpg"
+    },
+    {
+      "id": "6",
+      "title": "Конкурсы на корпоратив",
+      "vendor-code": "4446e",
+      "description": "узнайте коллег с новой стороны",
+      "price": 15000,
+      "img": "shariki.jpg"
+    },
+    {
+      "id": "7",
+      "title": "Ведение юбилея",
+      "vendor-code": "4447e",
+      "description": "когда речь идёт  важных датах",
+      "price": 30000,
+      "img": "tort.jpg"
+    },
+    {
+      "id": "8",
+      "title": "Алкоконкурсы",
+      "vendor-code": "448e",
+      "description": "экстремальное веселье",
+      "price": 15000,
+      "img": "prazdnik_pov_bloki.jpg"
+    },
+    {
+      "id": "9",
+      "title": "Свадебное оформление",
+      "vendor-code": "444e",
+      "description": "лучший выбор, чтобы показать статусность",
+      "price": 30000,
+      "img": "koltsa.jpg"
+    },
+    {
+      "id": "10",
+      "title": "Оригинальные фотозоны",
+      "vendor-code": "44411e",
+      "description": "в тематике вашего мероприятия",
+      "price": 15000,
+      "img": "prazdnik_pov_bloki.jpg"
+    },
+    {
+      "id": "11",
+      "title": "Детский грим",
+      "vendor-code": "44412e",
+      "description": "ящерица!",
+    "price": 5000,
+    "img": "shariki.jpg"
+  }
+  ]
