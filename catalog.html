@@ -12,7 +12,8 @@
     
     <div class="container">
         <div class="card-body">
-            <h4 class='card-title text-center'>Каталог</h4>
+            <h1>Каталог товаров</h1>
+            <div id="products-container"></div>
             <input type="radio" id="title" name="sort" checked onchange="sort()"> Сортировать по названию </input>
             <input type="radio" id="price" name="sort" onchange="sort()"> Сортировать по цене </input>
             <input type="text" id="search" name="search" onchange="search()"> Поиск по каталогу </input>
@@ -20,14 +21,15 @@
                 <input name="q" type="hidden" value="search">
                 <ul class="d-flex flex-row justify-content-around flex-wrap bg-light" id="node_for_insert">
                 </ul>
-                <h2>Ваша корзина</h2>
-                <div id="cart-items"></div>
-                <p>Общая сумма заказа: <span id="total-amount">0</span></p>
-                <input class="button" type="Submit" value="В корзину">
-            </form>
-        </div>
+                
+                
+                <h1>Корзина</h1>
+                <div class="cart-container"></div>
+            
+                <script src="sorting.js"></script>
+                        </form>
+                    </div>
 </body>
- <script src="sorting.js"></script>
 
 
 
