@@ -14,23 +14,25 @@
         <div class="card-body">
             <h1>Каталог товаров</h1>
             <div id="products-container"></div>
-            <input type="radio" id="title" name="sort" checked onchange="sort()"> Сортировать по названию </input>
-            <input type="radio" id="price" name="sort" onchange="sort()"> Сортировать по цене </input>
-            <input type="text" id="search" name="search" onchange="search()"> Поиск по каталогу </input>
+            <label for="title">Сортировать по названию:</label>
+            <input type="radio" id="title" name="sort" checked onchange="sort()">
+            <br>
+            <label for="price">Сортировать по цене:</label>
+            <input type="radio" id="price" name="sort" onchange="sort()">
+            <br>
+            <label for="search">Поиск по каталогу:</label>
+            <input type="text" id="search" name="search" onkeyup="search()">
             <form action="https://www.google.com/search?" id="UserEnter" name="UserEnter" target="_blank">
                 <input name="q" type="hidden" value="search">
                 <ul class="d-flex flex-row justify-content-around flex-wrap bg-light" id="node_for_insert">
                 </ul>
-                
-                
-                <h1>Корзина</h1>
-                <div class="cart-container"></div>
+            </form>
             
-                <script src="sorting.js"></script>
-                        </form>
-                    </div>
+            <h1>Корзина</h1>
+            <div class="cart-container"></div>
+        </div>
+        
+        <script src="sorting.js"></script>
+    </div>
 </body>
-
-
-
 </html>
