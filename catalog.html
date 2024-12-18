@@ -1,42 +1,260 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <title>Каталог услуг</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="minor-project-styles.css">
+    <style>
+        .product-card {
+            width: 250px;
+            margin-bottom: 20px;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .product-image {
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .cart-item {
+            border-top: 1px solid #ccc;
+            padding: 10px 0;
+        }
+
+        .cart-item img {
+            max-width: 50px;
+            float: left;
+            margin-right: 10px;
+        }
+
+        .cart-item h6 {
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .cart-item p {
+            font-size: 12px;
+            color: #666;
+            margin: 0;
+        }
+
+        .cart-item button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            float: right;
+            font-size: 16px;
+            line-height: 24px;
+            color: red;
+        }
+
+        .total-price {
+            text-align: right;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+    </style>
 </head>
 <body>
-    <div id="home"><h6><a href="index.html">Вернуться на главную страницу</a></h6></div> 
-    
-    <div class="container">
-        <div class="card-body">
-            <h1>Каталог товаров</h1>
-            <div id="products-container"></div>
-            <label for="title">Сортировать по названию:</label>
-            <input type="radio" id="title" name="sort" checked onchange="sort()">
-            <br>
-            <label for="price">Сортировать по цене:</label>
-            <input type="radio" id="price" name="sort" onchange="sort()">
-            <br>
-            <label for="search">Поиск по каталогу:</label>
-            <input type="text" id="search" name="search" onkeyup="search()">
-            <form action="https://www.google.com/search?" id="UserEnter" name="UserEnter" target="_blank">
-                <input name="q" type="hidden" value="search">
-                <ul class="d-flex flex-row justify-content-around flex-wrap bg-light" id="node_for_insert">
-                </ul>
-            </form>
-            
-            <h1>Корзина</h1>
-            <div class="cart-container">
-                <div id="cart-items"></div>
-                <button id="checkout-button" disabled>Оформить заказ</button>
-            </div>
-        </div>
+<div id="home"><h6><a href="index.html">Вернуться на главную страницу</a></h6></div>
 
-        <script src="sorting.js"></script>
-        <script src="shopping-cart.js"></script>
+<div class="container">
+    <div class="card-body">
+        <h1>Каталог товаров</h1>
+        <div id="products-container"></div>
+        <label for="title">Сортировать по названию:</label>
+        <input type="radio" id="title" name="sort" checked onchange="sortByTitle()">
+        <br>
+        <label for="price">Сортировать по цене:</label>
+        <input type="radio" id="price" name="sort" onchange="sortByPrice()">
+        <br>
+        <label for="search">Поиск по каталогу:</label>
+        <input type="text" id="search" name="search" onkeyup="filterProducts()">
+
+        <h1>Корзина</h1>
+        <div class="cart-container">
+            <div id="cart-items"></div>
+            <div class="total-price">Итого: <span id="total-cost">0 руб.</span></div>
+            <button id="checkout-button" disabled>Оформить заказ</button>
+        </div>
     </div>
+</div>
+
+<script>
+    // Данные о товарах
+    const products = [
+      {
+        "id": "1",
+        "title": "Тамада",
+        "vendor_code": "111",
+        "description": "Хороший - конкурсы интересные",
+        "price": 40000,
+        "img": "koltsa.jpg"
+      },
+      {
+        "id": "2",
+        "title": "Ведущий",
+        "vendor-code": "222",
+        "description": "Весело, смешно, задорно",
+        "price": 20000,
+        "img": "prazdnik_pov_bloki.jpg"
+      },
+      {
+        "id": "3",
+        "title": "Аниматор",
+        "vendor-code": "333",
+        "description": "Детям понравится",
+        "price": 30000,
+        "img": "shariki.jpg"
+      },
+      {
+        "id": "4",
+        "title": "Свадебные конкурсы",
+        "vendor-code": "444e",
+        "description": "Свадьба запомнится надолго",
+        "price": 15000,
+        "img": "koltsa.jpg"
+      },
+      {
+        "id": "5",
+        "title": "Детские конкурсы",
+        "vendor-code": "4445e",
+        "description": "Детям точно не будет скучно",
+        "price": 15000,
+        "img": "shariki.jpg"
+      },
+      {
+        "id": "6",
+        "title": "Конкурсы на корпоратив",
+        "vendor-code": "4446e",
+        "description": "Узнайте коллег с новой стороны",
+        "price": 15000,
+        "img": "shariki.jpg"
+      },
+      {
+        "id": "7",
+        "title": "Ведение юбилея",
+        "vendor-code": "4447e",
+        "description": "Когда речь идет о важных датах",
+        "price": 30000,
+        "img": "tort.jpg"
+      },
+      {
+        "id": "8",
+        "title": "Алкогольные конкурсы",
+        "vendor-code": "448e",
+        "description": "Экстремальное веселье",
+        "price": 15000,
+        "img": "prazdnik_pov_bloki.jpg"
+      },
+      {
+        "id": "9",
+        "title": "Свадебное оформление",
+        "vendor-code": "444e",
+        "description": "Лучший выбор, чтобы показать статусность",
+        "price": 30000,
+        "img": "koltsa.jpg"
+      },
+      {
+        "id": "10",
+        "title": "Оригинальные фотозоны",
+        "vendor-code": "44411e",
+        "description": "В тематике вашего мероприятия",
+        "price": 15000,
+        "img": "prazdnik_pov_bloki.jpg"
+      },
+      {
+        "id": "11",
+        "title": "Детский грим",
+        "vendor-code": "44412e",
+        "description": "Ящерица!",
+        "price": 5000,
+        "img": "shariki.jpg"
+      }
+    ];
+
+    let cartItems = [];
+
+    function renderProducts(productsToRender) {
+        document.getElementById('products-container').innerHTML = '';
+        productsToRender.forEach(product => {
+            const productCard = `
+                <div class="product-card card mb-3">
+                    <img src="${product.img}" alt="${product.title}" class="product-image card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">${product.title}</h5>
+                        <p class="card-text">${product.description}</p>
+                        <p class="card-text">Цена: ${product.price} руб.</p>
+                        <button onclick="addToCart(${product.id})" class="btn btn-primary">Добавить в корзину</button>
+                    </div>
+                </div>
+            `;
+            document.getElementById('products-container').insertAdjacentHTML('beforeend', productCard);
+        });
+    }
+
+    function sortByTitle() {
+        const sortedProducts = [...products].sort((a, b) => a.title.localeCompare(b.title));
+        renderProducts(sortedProducts);
+    }
+
+    function sortByPrice() {
+        const sortedProducts = [...products].sort((a, b) => a.price - b.price);
+        renderProducts(sortedProducts);
+    }
+
+    function filterProducts() {
+        const searchTerm = document.getElementById('search').value.toLowerCase();
+        const filteredProducts = products.filter(product => product.title.toLowerCase().includes(searchTerm));
+        renderProducts(filteredProducts);
+    }
+
+    function addToCart(id) {
+        const product = products.find(p => p.id === String(id));
+        if (!cartItems.some(item => item.id === product.id)) {
+            cartItems.push({ ...product, quantity: 1 });
+        } else {
+            const existingItemIndex = cartItems.findIndex(item => item.id === product.id);
+            cartItems[existingItemIndex].quantity++;
+        }
+        updateCart();
+    }
+
+    function removeFromCart(id) {
+        const index = cartItems.findIndex(item => item.id === String(id));
+        if (index !== -1 && cartItems[index].quantity > 1) {
+            cartItems[index].quantity--;
+        } else {
+            cartItems.splice(index, 1);
+        }
+        updateCart();
+    }
+
+    function updateCart() {
+        document.getElementById('cart-items').innerHTML = '';
+        let totalCost = 0;
+        cartItems.forEach(item => {
+            const cartItem = `
+                <div class="cart-item">
+                    <img src="${item.img}" alt="${item.title}">
+                    <h6>${item.title}</h6>
+                    <p>Количество: ${item.quantity}</p>
+                    <p>Цена за единицу: ${item.price} руб.</p>
+                    <button onclick="removeFromCart(${item.id})">Удалить</button>
+                </div>
+            `;
+            document.getElementById('cart-items').insertAdjacentHTML('beforeend', cartItem);
+            totalCost += item.price * item.quantity;
+        });
+        document.getElementById('total-cost').textContent = `${totalCost} руб.`;
+        document.getElementById('checkout-button').disabled = cartItems.length === 0;
+    }
+
+    window.onload = () => {
+        renderProducts(products);
+    };
+</script>
 </body>
 </html>
