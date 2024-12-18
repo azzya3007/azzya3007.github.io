@@ -31,8 +31,7 @@ function renderCart() {
         cartItems.forEach(cartItem => {
             let cartItemElement = `
             <li>${cartItem.quantity}x ${getProductById(cartItem.id).title}: ${cartItem.quantity * getProductById(cartItem.id).price} руб.</li>
-            `;
-            cartItemsContainer.insertAdjacentHTML('beforeend', cartItemElement);
+            cartItemsContainer.appendChild(cartItemElement);
         });
         document.getElementById("checkout-button").disabled = false;
     }
@@ -43,12 +42,14 @@ function getProductById(id) {
     return products.find(product => product.id === id);
 }
 
-// Обработчик для кнопки оформления заказа
-document.getElementById("checkout-button").addEventListener("click", function() {
-    alert("Переход на страницу обработки заказа"); // Замените на редирект на страницу обработки заказа
+document.addEventListener('DOMContentLoaded', () => {
+    renderCart();
 });
 
-// Функция для инициализации корзины
-document.addEventListener('DOMContentLoaded', () => {
+document.getElementById("checkout-button").addEventListener("click", function() {
+    alert("Переход на страницу обработки заказа");
+});
+
+document.addEventListener('load', () => {
     renderCart();
 });
