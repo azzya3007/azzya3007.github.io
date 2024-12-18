@@ -10,7 +10,47 @@ const products = [
     { id: 3, imageUrl: 'path/to/product3.jpg', title: 'Алкоконкурсы', description: 'Описание товара 3' },
     { id: 3, imageUrl: 'path/to/product3.jpg', title: 'Услуги ведущего', description: 'Описание товара 3' },
 ];
+let cart = [];
+function addToCart(productId, quantity) {
+    const existingItemIndex = cart.findIndex(item => item.productId === productId);
+    if (existingItemIndex !== -1) {
+        cart[existingItemIndex].quantity += quantity;
+    } else {
+        cart.push({ productId, quantity });
+    }
+    updateCart();
+}
+ let totalAmount = 0;
+  cart.forEach(cartItem => {
+        const product = products.find(p => p.id === cartItem.productId);
+        if (!product) return;
 
+        const cartItemDiv = document.createElement('div');
+        cartItemDiv.className = 'cart-item';
+
+        const productTitle = document.createElement('span');
+        productTitle.textContent = `${product.title}: `;
+        cartItemDiv.appendChild(productTitle);
+
+        const productQuantity = document.createElement('span');
+        productQuantity.textContent = `x${cartItem.quantity}`;
+        cartItemDiv.appendChild(productQuantity);
+
+        const productTotalPrice = document.createElement('span');
+        const itemTotalPrice = product.price * cartItem.quantity;
+        productTotalPrice.textContent = ` ${itemTotalPrice} руб.`;
+        cartItemDiv.appendChild(productTotalPrice);
+
+        cartContainer.appendChild(cartItemDiv);
+
+        totalAmount += itemTotalPrice;
+    });
+
+    const cartTotalDiv = document.createElement('div');
+    cartTotalDiv.className = 'cart-total';
+    cartTotalDiv.textContent = `Общая сумма: ${totalAmount} руб.`;
+    cartContainer.appendChild(cartTotalDiv);
+}
 // Функция для генерации блока товара
 function createProductBlock(product) {
     const productDiv = document.createElement('div');
@@ -34,6 +74,7 @@ function createProductBlock(product) {
     return productDiv;
 }
 
+
 // Вставляем все товары в контейнер
 const container = document.getElementById('products-container');
 products.forEach((product) => {
@@ -41,3 +82,4 @@ products.forEach((product) => {
     container.appendChild(productBlock);
 });
 
+   
